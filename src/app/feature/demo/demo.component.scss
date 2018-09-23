@@ -1,0 +1,22 @@
+@import "../../../variables";
+
+mat-toolbar {
+  display: flex;
+
+  .actions {
+    margin-left: 4rem;
+
+    .active {
+      background-color: mat-color($app-primary, darker);
+    }
+  }
+}
+
+.demo-container {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}

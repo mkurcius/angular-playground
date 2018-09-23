@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+  <section>
+    <mct-demo-form-group formGroupName="group" [group]="model?.group"></mct-demo-form-group>
+  </section>
+
+  <section>
+    <mct-demo-form-array formArrayName="array" [array]="model?.array || []"></mct-demo-form-array>
+  </section>
+
+  <section class="actions">
+    <button type="submit" mat-raised-button color="primary">Save</button>
+  </section>
+</form>

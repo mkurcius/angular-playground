@@ -1,0 +1,12 @@
+<mct-demo-form [model]="model$ | async"
+               (onSave)="handleSubmit($event)"></mct-demo-form>
+
+<ng-template let-modelForm>
+  <h2 mat-dialog-title>Object updated</h2>
+  <mat-dialog-content>
+    <div class="img-container">
+      <img src="/assets/cat_coffe.png">
+    </div>
+    <pre>{{modelForm | json}}</pre>
+  </mat-dialog-content>
+</ng-template>
