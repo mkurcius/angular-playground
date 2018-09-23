@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatDialogModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
 import { DemoCreateFormComponent } from './+create/demo-create-form.component';
 import { DemoEditFormComponent } from './+edit/demo-edit-form.component';
 import { DemoFormModule } from './demo-form/demo-form.module';
@@ -15,6 +15,7 @@ import { DemoComponent } from './demo.component';
     MatToolbarModule,
     MatButtonModule,
     MatDialogModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     DemoComponent,

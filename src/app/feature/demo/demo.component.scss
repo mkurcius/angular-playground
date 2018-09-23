@@ -6,6 +6,10 @@ mat-toolbar {
   .actions {
     margin-left: 4rem;
 
+    a + a {
+      margin-left: 0.5rem;
+    }
+
     .active {
       background-color: mat-color($app-primary, darker);
     }
