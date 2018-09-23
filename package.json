@@ -7,7 +7,9 @@
     "build": "ng build --aot",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "ngh": "ngh",
+    "build:github-page": "ng build --prod --base-href https://mkurcius.github.io/angular-form-demo/ && ngh --dir dist/angular-form-demo"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +36,7 @@
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~10.10.3",
+    "angular-cli-ghpages": "^0.5.3",
     "codelyzer": "~4.3.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
