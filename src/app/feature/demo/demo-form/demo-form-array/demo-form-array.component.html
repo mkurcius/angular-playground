@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-content>
+    <div class="group" *ngFor="let group of form.controls" [formGroup]="group">
+      <mat-form-field>
+        <input matInput formControlName="prop3" placeholder="Prop 3">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" formControlName="prop4" placeholder="Prop 4">
+      </mat-form-field>
+    </div>
+
+    <button type="button" mat-flat-button (click)="add()" color="accent">+Add</button>
+  </mat-card-content>
+</mat-card>
