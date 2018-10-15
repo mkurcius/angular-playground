@@ -2,12 +2,12 @@
   <mat-card-content [formGroup]="form">
     <div>
       <mat-form-field>
-        <input matInput formControlName="prop1" placeholder="Prop 1">
+        <input matInput formControlName="prop1" placeholder="Prop 1" [mctPristine]="group?.prop1">
       </mat-form-field>
     </div>
     <div>
       <mat-form-field>
-        <input matInput type="number" formControlName="prop2" placeholder="Prop 2">
+        <input matInput type="number" formControlName="prop2" placeholder="Prop 2" [mctPristine]="group?.prop2">
       </mat-form-field>
     </div>
   </mat-card-content>

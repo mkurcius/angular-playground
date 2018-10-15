@@ -8,6 +8,6 @@
   </section>
 
   <section class="actions">
-    <button type="submit" mat-raised-button color="primary">Save</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid || form.pristine">Save</button>
   </section>
 </form>

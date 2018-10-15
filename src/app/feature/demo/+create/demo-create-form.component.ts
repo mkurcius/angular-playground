@@ -1,5 +1,6 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { DeepPartial } from 'ts-essentials/dist';
 import { ModelForm } from '../demo-form/model-form';
 
 @Component({
@@ -13,7 +14,7 @@ export class DemoCreateFormComponent {
   @ViewChild(TemplateRef)
   modal: TemplateRef<any>;
 
-  handleSubmit(modelForm: ModelForm) {
+  handleSubmit(modelForm: DeepPartial<ModelForm>) {
     this.dialog.open(this.modal, {
       width: '600px',
       data: modelForm

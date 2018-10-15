@@ -1,14 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
+import { DeepPartial } from 'ts-essentials/dist';
 import { FormUtils } from '../../../utils/form-utils';
 import { Model } from '../model';
 import { ModelForm } from './model-form';
@@ -19,35 +11,24 @@ import { ModelForm } from './model-form';
   styleUrls: ['./demo-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DemoFormComponent implements OnInit, OnChanges {
+export class DemoFormComponent {
   @Input()
   model: Model | null = null;
   @Output()
-  onSave = new EventEmitter<ModelForm>();
+  onSave = new EventEmitter<DeepPartial<ModelForm>>();
 
-  form: FormGroup;
-
-  ngOnInit() {
-    // ngOnChanges runs before ngOnInit, so form can already be built
-    if (!this.form) {
-      this.buildForm();
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.buildForm();
-  }
-
-  handleSubmit() {
-    this.onSave.emit(this.form.value);
-  }
-
-  private buildForm() {
+  constructor() {
     const config: FormUtils.Config<ModelForm> = {
       group: new FormGroup({}),
       array: new FormArray([]),
     };
 
     this.form = new FormGroup(config);
+  }
+
+  form: FormGroup;
+
+  handleSubmit() {
+    this.onSave.emit(FormUtils.dirtyValue<ModelForm>(this.form));
   }
 }

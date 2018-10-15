@@ -1,3 +1,4 @@
+import { DeepPartial } from 'ts-essentials/dist';
 import { Model } from '../model';
 
 export interface ModelForm {
@@ -12,4 +13,6 @@ export namespace ModelForm {
       array: model.array,
     };
   }
+
+  export type Changes = DeepPartial<ModelForm>;
 }

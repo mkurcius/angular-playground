@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Optional, Self, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Optional, Self, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, FormGroupName } from '@angular/forms';
 import { FormUtils } from '../../../../utils/form-utils';
 import { Model } from '../../model';
@@ -8,7 +8,7 @@ import { Model } from '../../model';
   templateUrl: './demo-form-group.component.html',
   styleUrls: ['./demo-form-group.component.scss'],
 })
-export class DemoFormGroupComponent implements OnChanges {
+export class DemoFormGroupComponent implements OnInit, OnChanges {
   @Input()
   group: Model.Group1 | null = null;
 
@@ -16,10 +16,29 @@ export class DemoFormGroupComponent implements OnChanges {
 
   form: FormGroup;
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnInit(): void {
     this.form = this.formGroupName.control;
 
-    FormUtils.setControl<Model.Group1>('prop1', new FormControl(this.group ? this.group.prop1 : ''), this.form);
-    FormUtils.setControl<Model.Group1>('prop2', new FormControl(this.group ? this.group.prop2 : null), this.form);
+    FormUtils.setControls<Model.Group1>({
+      prop1: new FormControl(),
+      prop2: new FormControl()
+    }, this.form);
+
+    this.refresh();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.form) {
+      this.refresh();
+    }
+  }
+
+  private refresh() {
+    const value: Model.Group1 = {
+      prop1: this.group ? this.group.prop1 : null,
+      prop2: this.group ? this.group.prop2 : null,
+    };
+
+    this.form.reset(value, {emitEvent: false});
   }
 }

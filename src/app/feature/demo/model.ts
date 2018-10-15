@@ -11,6 +11,7 @@ export namespace Model {
   }
 
   export interface Group2 {
+    id: number;
     prop3: string;
     prop4: number;
   }

@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Observable, of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
+import { DeepPartial } from 'ts-essentials/dist';
 import { ModelForm } from '../demo-form/model-form';
 import { Model } from '../model';
 
@@ -29,14 +30,17 @@ export class DemoEditFormComponent implements OnInit {
       },
       array: [
         {
+          id: 1,
           prop3: 'Value 3.1',
           prop4: 1,
         },
         {
+          id: 2,
           prop3: 'Value 3.2',
           prop4: 2,
         },
         {
+          id: 3,
           prop3: 'Value 3.3',
           prop4: 3,
         },
@@ -47,7 +51,7 @@ export class DemoEditFormComponent implements OnInit {
     );
   }
 
-  handleSubmit(modelForm: ModelForm) {
+  handleSubmit(modelForm: DeepPartial<ModelForm>) {
     this.dialog.open(this.modal, {
       width: '600px',
       data: modelForm,
