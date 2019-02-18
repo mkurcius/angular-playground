@@ -3,9 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-form-demo": {
-      "root": "",
-      "sourceRoot": "src",
+    "form-example": {
+      "root": "projects/form-example/",
+      "sourceRoot": "projects/form-example/src",
       "projectType": "application",
       "prefix": "mct",
       "schematics": {
@@ -17,29 +17,30 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-form-demo",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "outputPath": "dist/form-example",
+            "index": "projects/form-example/src/index.html",
+            "main": "projects/form-example/src/main.ts",
+            "polyfills": "projects/form-example/src/polyfills.ts",
+            "tsConfig": "projects/form-example/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/form-example/src/favicon.ico",
+              "projects/form-example/src/assets"
             ],
             "styles": [
               {
                 "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
               },
-              "src/styles.scss"
+              "projects/form-example/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/form-example/src/environments/environment.ts",
+                  "with": "projects/form-example/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -50,44 +51,51 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-form-demo:build"
+            "browserTarget": "form-example:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-form-demo:build:production"
+              "browserTarget": "form-example:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-form-demo:build"
+            "browserTarget": "form-example:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "main": "projects/form-example/src/test.ts",
+            "polyfills": "projects/form-example/src/polyfills.ts",
+            "tsConfig": "projects/form-example/tsconfig.spec.json",
+            "karmaConfig": "projects/form-example/karma.conf.js",
             "styles": [
               {
                 "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
               },
-              "src/styles.scss"
+              "projects/form-example/src/styles.css"
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/form-example/src/favicon.ico",
+              "projects/form-example/src/assets"
             ]
           }
         },
@@ -95,8 +103,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "projects/form-example/tsconfig.app.json",
+              "projects/form-example/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -105,26 +113,103 @@
         }
       }
     },
-    "angular-form-demo-e2e": {
-      "root": "e2e/",
+    "overlay-example": {
+      "root": "projects/overlay-example/",
+      "sourceRoot": "projects/overlay-example/src",
       "projectType": "application",
+      "prefix": "mct",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-form-demo:serve"
+            "outputPath": "dist/overlay-example",
+            "index": "projects/overlay-example/src/index.html",
+            "main": "projects/overlay-example/src/main.ts",
+            "polyfills": "projects/overlay-example/src/polyfills.ts",
+            "tsConfig": "projects/overlay-example/tsconfig.app.json",
+            "assets": [
+              "projects/overlay-example/src/favicon.ico",
+              "projects/overlay-example/src/assets"
+            ],
+            "styles": [
+              "projects/overlay-example/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-form-demo:serve:production"
+              "fileReplacements": [
+                {
+                  "replace": "projects/overlay-example/src/environments/environment.ts",
+                  "with": "projects/overlay-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "overlay-example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "overlay-example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "overlay-example:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/overlay-example/src/test.ts",
+            "polyfills": "projects/overlay-example/src/polyfills.ts",
+            "tsConfig": "projects/overlay-example/tsconfig.spec.json",
+            "karmaConfig": "projects/overlay-example/karma.conf.js",
+            "styles": [
+              "projects/overlay-example/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/overlay-example/src/favicon.ico",
+              "projects/overlay-example/src/assets"
+            ]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
+            "tsConfig": [
+              "projects/overlay-example/tsconfig.app.json",
+              "projects/overlay-example/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]
@@ -133,5 +218,5 @@
       }
     }
   },
-  "defaultProject": "angular-form-demo"
+  "defaultProject": "overlay-example"
 }
