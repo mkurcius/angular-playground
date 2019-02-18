@@ -1,2 +1,2 @@
-# angular-form-demo
-Complex Form Demo in Angular
+# Angular Playground
+Angular Playground & Fun
